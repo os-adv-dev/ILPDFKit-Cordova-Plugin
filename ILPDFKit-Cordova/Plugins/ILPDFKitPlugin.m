@@ -99,8 +99,8 @@
         else {
             _pluginResult=[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"The path/url is empty"];
         }
-        if(_pluginResult != null){
-        [self.commandDelegate sendPluginResult:_pluginResult callbackId:command.callbackId];
+        if(_pluginResult != nil){
+            [self.commandDelegate sendPluginResult:_pluginResult callbackId:command.callbackId];
         }
     }];
 }
