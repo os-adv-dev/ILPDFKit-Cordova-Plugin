@@ -34,7 +34,7 @@
     [self.commandDelegate runInBackground:^{
         NSString *pdf = [command.arguments objectAtIndex:0];
         NSDictionary *options = [command.arguments objectAtIndex:1];
-        [_pluginResult setKeepCallbackAsBool:true];
+        //[_pluginResult setKeepCallbackAsBool:true];
         BOOL useDocumentsFolder = [options[@"useDocumentsFolder"] boolValue];
         BOOL openFromUrl = [options[@"openFromUrl"] boolValue];
         BOOL openFromPath = [options[@"openFromPath"] boolValue];
@@ -78,7 +78,9 @@
                         [self openPdfFromPath:filePath];
                     }
                     else{
-                        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to download pdf"];
+                        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:6], @"errorCode", @"Failed to download pdf", @"errorMessage", nil];
+                        //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to download pdf"];
+                        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
                     }
                     
                 }] resume];
@@ -87,7 +89,9 @@
                     [self openPdfFromPath:pdf];
                 }
                 else{
-                    _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"One of Types of path should be choose"];
+                    NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:5], @"errorCode", @"One of Types of path should be choose", @"errorMessage", nil];
+                    //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"One of Types of path should be choose"];
+                    _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
 
                 }
             }
@@ -150,6 +154,7 @@
     }else{
         NSMutableDictionary* resObj = [NSMutableDictionary dictionaryWithCapacity:1];
         [resObj setObject:finalPath forKey:@"filePath"];
+        [resObj setObject:[NSNumber numberWithInteger:0] forKey:@"errorCode"];
         _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:resObj];
     }
     [self.commandDelegate sendPluginResult:_pluginResult
@@ -213,6 +218,8 @@
     id value = [self valueForFormName:name];
 
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:value] callbackId:command.callbackId];
+    //NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:0], @"errorCode", value, @"formValue", nil];
+    //[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result] callbackId:command.callbackId];
 }
 
 - (id)valueForFormName:(NSString *)name {
