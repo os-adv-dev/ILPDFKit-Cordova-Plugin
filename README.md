@@ -5,11 +5,7 @@ Cordova plugin for [ILPDFKit](https://github.com/iwelabs/ILPDFKit)
 
 Install
 =======
-cordova plugin add https://github.com/InformationArchiTECH/ILPDFKit-Cordova-Plugin
-
-or
-
-phonegap local plugin add https://github.com/InformationArchiTECH/ILPDFKit-Cordova-Plugin
+cordova plugin add https://domingosgomes@bitbucket.org/domingosgomes/ilpdfkitplugin.git
 
 Usage
 =====
@@ -34,6 +30,8 @@ fileNameToSave - file name of saved pdf. If not specified original pdf name used
 autoSave - true/false
 askToSaveBeforeClose - true/false (If true and any form field changed alert massage will appear on close)
 backgroundMode - true/false (Present or not pdf view controller)
+openFromUrl - true/false (If is to open from a url)
+openFromPath - true/false (If is to open from a file path)
 ```
 
 Example how to set/get form values

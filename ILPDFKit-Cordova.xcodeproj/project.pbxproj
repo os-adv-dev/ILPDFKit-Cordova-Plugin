@@ -26,26 +26,7 @@
 		308D05391370CCF300D202BF /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 308D05301370CCF300D202BF /* icon@2x.png */; };
 		30A0434814DC770100060A13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434314DC770100060A13 /* Localizable.strings */; };
 		30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC414816E50CA1004E6F35 /* icon-72@2x.png */; };
-		32644AFE19F7ABA60083871E /* ILPDFKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644AFD19F7ABA60083871E /* ILPDFKit.m */; };
-		32644B2B19F7AD6A0083871E /* PDFSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B0219F7AD6A0083871E /* PDFSerializer.m */; };
-		32644B2C19F7AD6A0083871E /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B0419F7AD6A0083871E /* PDFViewController.m */; };
-		32644B2D19F7AD6A0083871E /* PDFArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B0719F7AD6A0083871E /* PDFArray.m */; };
-		32644B2E19F7AD6A0083871E /* PDFDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B0919F7AD6A0083871E /* PDFDictionary.m */; };
-		32644B2F19F7AD6A0083871E /* PDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B0B19F7AD6A0083871E /* PDFDocument.m */; };
-		32644B3019F7AD6A0083871E /* PDFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B0D19F7AD6A0083871E /* PDFForm.m */; };
-		32644B3119F7AD6A0083871E /* PDFFormAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B0F19F7AD6A0083871E /* PDFFormAction.m */; };
-		32644B3219F7AD6A0083871E /* PDFFormContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B1119F7AD6A0083871E /* PDFFormContainer.m */; };
-		32644B3319F7AD6A0083871E /* PDFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B1319F7AD6A0083871E /* PDFObject.m */; };
-		32644B3419F7AD6A0083871E /* PDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B1519F7AD6A0083871E /* PDFPage.m */; };
-		32644B3519F7AD6A0083871E /* PDFStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B1719F7AD6A0083871E /* PDFStream.m */; };
-		32644B3619F7AD6A0083871E /* PDFObjectParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B1B19F7AD6A0083871E /* PDFObjectParser.m */; };
-		32644B3719F7AD6A0083871E /* PDFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B1D19F7AD6A0083871E /* PDFUtility.m */; };
-		32644B3819F7AD6A0083871E /* PDFFormButtonField.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B2019F7AD6A0083871E /* PDFFormButtonField.m */; };
-		32644B3919F7AD6A0083871E /* PDFFormChoiceField.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B2219F7AD6A0083871E /* PDFFormChoiceField.m */; };
-		32644B3A19F7AD6A0083871E /* PDFFormSignatureField.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B2419F7AD6A0083871E /* PDFFormSignatureField.m */; };
-		32644B3B19F7AD6A0083871E /* PDFFormTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B2619F7AD6A0083871E /* PDFFormTextField.m */; };
-		32644B3C19F7AD6A0083871E /* PDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B2819F7AD6A0083871E /* PDFView.m */; };
-		32644B3D19F7AD6A0083871E /* PDFWidgetAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644B2A19F7AD6A0083871E /* PDFWidgetAnnotationView.m */; };
+		32644AFE19F7ABA60083871E /* ILPDFKitPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 32644AFD19F7ABA60083871E /* ILPDFKitPlugin.m */; };
 		32644B4919F7B9ED0083871E /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 32644B4819F7B9ED0083871E /* test.pdf */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		7E7966DE1810823500FA85AD /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966D41810823500FA85AD /* icon-40.png */; };
@@ -59,6 +40,29 @@
 		7E7966E61810823500FA85AD /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DC1810823500FA85AD /* icon-small.png */; };
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
+		EDA6FCCB1DFF1EA400B29014 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA6FCCA1DFF1EA400B29014 /* UIKit.framework */; };
+		EDD735A61DFEE83900100F37 /* ILPDFSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735771DFEE83900100F37 /* ILPDFSerializer.m */; };
+		EDD735A71DFEE83900100F37 /* ILPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735791DFEE83900100F37 /* ILPDFViewController.m */; };
+		EDD735A81DFEE83900100F37 /* ILPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7357D1DFEE83900100F37 /* ILPDFDocument.m */; };
+		EDD735A91DFEE83900100F37 /* ILPDFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7357F1DFEE83900100F37 /* ILPDFForm.m */; };
+		EDD735AA1DFEE83900100F37 /* ILPDFFormContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735811DFEE83900100F37 /* ILPDFFormContainer.m */; };
+		EDD735AB1DFEE83900100F37 /* ILPDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735831DFEE83900100F37 /* ILPDFPage.m */; };
+		EDD735AC1DFEE83900100F37 /* ILPDFArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735861DFEE83900100F37 /* ILPDFArray.m */; };
+		EDD735AD1DFEE83900100F37 /* ILPDFDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735881DFEE83900100F37 /* ILPDFDictionary.m */; };
+		EDD735AE1DFEE83900100F37 /* ILPDFName.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7358A1DFEE83900100F37 /* ILPDFName.m */; };
+		EDD735AF1DFEE83900100F37 /* ILPDFNull.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7358C1DFEE83900100F37 /* ILPDFNull.m */; };
+		EDD735B01DFEE83900100F37 /* ILPDFNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7358E1DFEE83900100F37 /* ILPDFNumber.m */; };
+		EDD735B11DFEE83900100F37 /* ILPDFStream.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735911DFEE83900100F37 /* ILPDFStream.m */; };
+		EDD735B21DFEE83900100F37 /* ILPDFString.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735931DFEE83900100F37 /* ILPDFString.m */; };
+		EDD735B31DFEE83900100F37 /* ILPDFObjectParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735961DFEE83900100F37 /* ILPDFObjectParser.m */; };
+		EDD735B41DFEE83A00100F37 /* ILPDFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735981DFEE83900100F37 /* ILPDFUtility.m */; };
+		EDD735B51DFEE83A00100F37 /* ILPDFFormButtonField.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7359B1DFEE83900100F37 /* ILPDFFormButtonField.m */; };
+		EDD735B61DFEE83A00100F37 /* ILPDFFormChoiceField.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7359D1DFEE83900100F37 /* ILPDFFormChoiceField.m */; };
+		EDD735B71DFEE83A00100F37 /* ILPDFFormSignatureField.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD7359F1DFEE83900100F37 /* ILPDFFormSignatureField.m */; };
+		EDD735B81DFEE83A00100F37 /* ILPDFFormTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735A11DFEE83900100F37 /* ILPDFFormTextField.m */; };
+		EDD735B91DFEE83A00100F37 /* ILPDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735A31DFEE83900100F37 /* ILPDFView.m */; };
+		EDD735BA1DFEE83A00100F37 /* ILPDFWidgetAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD735A51DFEE83900100F37 /* ILPDFWidgetAnnotationView.m */; };
+		EDD735BD1DFEF2F200100F37 /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EDD735BC1DFEF2F200100F37 /* test.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,47 +108,8 @@
 		30A0434414DC770100060A13 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Localizable.strings; sourceTree = "<group>"; };
 		30A0434714DC770100060A13 /* se */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = se; path = Localizable.strings; sourceTree = "<group>"; };
 		30FC414816E50CA1004E6F35 /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
-		32644AFC19F7ABA60083871E /* ILPDFKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFKit.h; sourceTree = "<group>"; };
-		32644AFD19F7ABA60083871E /* ILPDFKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFKit.m; sourceTree = "<group>"; };
-		32644B0119F7AD6A0083871E /* PDFSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFSerializer.h; sourceTree = "<group>"; };
-		32644B0219F7AD6A0083871E /* PDFSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFSerializer.m; sourceTree = "<group>"; };
-		32644B0319F7AD6A0083871E /* PDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewController.h; sourceTree = "<group>"; };
-		32644B0419F7AD6A0083871E /* PDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFViewController.m; sourceTree = "<group>"; };
-		32644B0619F7AD6A0083871E /* PDFArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFArray.h; sourceTree = "<group>"; };
-		32644B0719F7AD6A0083871E /* PDFArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFArray.m; sourceTree = "<group>"; };
-		32644B0819F7AD6A0083871E /* PDFDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFDictionary.h; sourceTree = "<group>"; };
-		32644B0919F7AD6A0083871E /* PDFDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFDictionary.m; sourceTree = "<group>"; };
-		32644B0A19F7AD6A0083871E /* PDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFDocument.h; sourceTree = "<group>"; };
-		32644B0B19F7AD6A0083871E /* PDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFDocument.m; sourceTree = "<group>"; };
-		32644B0C19F7AD6A0083871E /* PDFForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFForm.h; sourceTree = "<group>"; };
-		32644B0D19F7AD6A0083871E /* PDFForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFForm.m; sourceTree = "<group>"; };
-		32644B0E19F7AD6A0083871E /* PDFFormAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFFormAction.h; sourceTree = "<group>"; };
-		32644B0F19F7AD6A0083871E /* PDFFormAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFFormAction.m; sourceTree = "<group>"; };
-		32644B1019F7AD6A0083871E /* PDFFormContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFFormContainer.h; sourceTree = "<group>"; };
-		32644B1119F7AD6A0083871E /* PDFFormContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFFormContainer.m; sourceTree = "<group>"; };
-		32644B1219F7AD6A0083871E /* PDFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFObject.h; sourceTree = "<group>"; };
-		32644B1319F7AD6A0083871E /* PDFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFObject.m; sourceTree = "<group>"; };
-		32644B1419F7AD6A0083871E /* PDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFPage.h; sourceTree = "<group>"; };
-		32644B1519F7AD6A0083871E /* PDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFPage.m; sourceTree = "<group>"; };
-		32644B1619F7AD6A0083871E /* PDFStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFStream.h; sourceTree = "<group>"; };
-		32644B1719F7AD6A0083871E /* PDFStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFStream.m; sourceTree = "<group>"; };
-		32644B1819F7AD6A0083871E /* PDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDF.h; sourceTree = "<group>"; };
-		32644B1A19F7AD6A0083871E /* PDFObjectParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFObjectParser.h; sourceTree = "<group>"; };
-		32644B1B19F7AD6A0083871E /* PDFObjectParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFObjectParser.m; sourceTree = "<group>"; };
-		32644B1C19F7AD6A0083871E /* PDFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFUtility.h; sourceTree = "<group>"; };
-		32644B1D19F7AD6A0083871E /* PDFUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFUtility.m; sourceTree = "<group>"; };
-		32644B1F19F7AD6A0083871E /* PDFFormButtonField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFFormButtonField.h; sourceTree = "<group>"; };
-		32644B2019F7AD6A0083871E /* PDFFormButtonField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFFormButtonField.m; sourceTree = "<group>"; };
-		32644B2119F7AD6A0083871E /* PDFFormChoiceField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFFormChoiceField.h; sourceTree = "<group>"; };
-		32644B2219F7AD6A0083871E /* PDFFormChoiceField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFFormChoiceField.m; sourceTree = "<group>"; };
-		32644B2319F7AD6A0083871E /* PDFFormSignatureField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFFormSignatureField.h; sourceTree = "<group>"; };
-		32644B2419F7AD6A0083871E /* PDFFormSignatureField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFFormSignatureField.m; sourceTree = "<group>"; };
-		32644B2519F7AD6A0083871E /* PDFFormTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFFormTextField.h; sourceTree = "<group>"; };
-		32644B2619F7AD6A0083871E /* PDFFormTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFFormTextField.m; sourceTree = "<group>"; };
-		32644B2719F7AD6A0083871E /* PDFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFView.h; sourceTree = "<group>"; };
-		32644B2819F7AD6A0083871E /* PDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFView.m; sourceTree = "<group>"; };
-		32644B2919F7AD6A0083871E /* PDFWidgetAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFWidgetAnnotationView.h; sourceTree = "<group>"; };
-		32644B2A19F7AD6A0083871E /* PDFWidgetAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFWidgetAnnotationView.m; sourceTree = "<group>"; };
+		32644AFC19F7ABA60083871E /* ILPDFKitPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFKitPlugin.h; sourceTree = "<group>"; };
+		32644AFD19F7ABA60083871E /* ILPDFKitPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFKitPlugin.m; sourceTree = "<group>"; };
 		32644B4819F7B9ED0083871E /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* ILPDFKit-Cordova-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ILPDFKit-Cordova-Prefix.pch"; sourceTree = "<group>"; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -162,6 +127,52 @@
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "ILPDFKit-Cordova/config.xml"; sourceTree = "<group>"; };
+		EDA6FCCA1DFF1EA400B29014 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EDD735761DFEE83900100F37 /* ILPDFSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFSerializer.h; sourceTree = "<group>"; };
+		EDD735771DFEE83900100F37 /* ILPDFSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFSerializer.m; sourceTree = "<group>"; };
+		EDD735781DFEE83900100F37 /* ILPDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFViewController.h; sourceTree = "<group>"; };
+		EDD735791DFEE83900100F37 /* ILPDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFViewController.m; sourceTree = "<group>"; };
+		EDD7357A1DFEE83900100F37 /* ILPDFKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFKit.h; sourceTree = "<group>"; };
+		EDD7357C1DFEE83900100F37 /* ILPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFDocument.h; sourceTree = "<group>"; };
+		EDD7357D1DFEE83900100F37 /* ILPDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFDocument.m; sourceTree = "<group>"; };
+		EDD7357E1DFEE83900100F37 /* ILPDFForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFForm.h; sourceTree = "<group>"; };
+		EDD7357F1DFEE83900100F37 /* ILPDFForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFForm.m; sourceTree = "<group>"; };
+		EDD735801DFEE83900100F37 /* ILPDFFormContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFFormContainer.h; sourceTree = "<group>"; };
+		EDD735811DFEE83900100F37 /* ILPDFFormContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFFormContainer.m; sourceTree = "<group>"; };
+		EDD735821DFEE83900100F37 /* ILPDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFPage.h; sourceTree = "<group>"; };
+		EDD735831DFEE83900100F37 /* ILPDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFPage.m; sourceTree = "<group>"; };
+		EDD735851DFEE83900100F37 /* ILPDFArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFArray.h; sourceTree = "<group>"; };
+		EDD735861DFEE83900100F37 /* ILPDFArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFArray.m; sourceTree = "<group>"; };
+		EDD735871DFEE83900100F37 /* ILPDFDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFDictionary.h; sourceTree = "<group>"; };
+		EDD735881DFEE83900100F37 /* ILPDFDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFDictionary.m; sourceTree = "<group>"; };
+		EDD735891DFEE83900100F37 /* ILPDFName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFName.h; sourceTree = "<group>"; };
+		EDD7358A1DFEE83900100F37 /* ILPDFName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFName.m; sourceTree = "<group>"; };
+		EDD7358B1DFEE83900100F37 /* ILPDFNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFNull.h; sourceTree = "<group>"; };
+		EDD7358C1DFEE83900100F37 /* ILPDFNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFNull.m; sourceTree = "<group>"; };
+		EDD7358D1DFEE83900100F37 /* ILPDFNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFNumber.h; sourceTree = "<group>"; };
+		EDD7358E1DFEE83900100F37 /* ILPDFNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFNumber.m; sourceTree = "<group>"; };
+		EDD7358F1DFEE83900100F37 /* ILPDFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFObject.h; sourceTree = "<group>"; };
+		EDD735901DFEE83900100F37 /* ILPDFStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFStream.h; sourceTree = "<group>"; };
+		EDD735911DFEE83900100F37 /* ILPDFStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFStream.m; sourceTree = "<group>"; };
+		EDD735921DFEE83900100F37 /* ILPDFString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFString.h; sourceTree = "<group>"; };
+		EDD735931DFEE83900100F37 /* ILPDFString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFString.m; sourceTree = "<group>"; };
+		EDD735951DFEE83900100F37 /* ILPDFObjectParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFObjectParser.h; sourceTree = "<group>"; };
+		EDD735961DFEE83900100F37 /* ILPDFObjectParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFObjectParser.m; sourceTree = "<group>"; };
+		EDD735971DFEE83900100F37 /* ILPDFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFUtility.h; sourceTree = "<group>"; };
+		EDD735981DFEE83900100F37 /* ILPDFUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFUtility.m; sourceTree = "<group>"; };
+		EDD7359A1DFEE83900100F37 /* ILPDFFormButtonField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFFormButtonField.h; sourceTree = "<group>"; };
+		EDD7359B1DFEE83900100F37 /* ILPDFFormButtonField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFFormButtonField.m; sourceTree = "<group>"; };
+		EDD7359C1DFEE83900100F37 /* ILPDFFormChoiceField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFFormChoiceField.h; sourceTree = "<group>"; };
+		EDD7359D1DFEE83900100F37 /* ILPDFFormChoiceField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFFormChoiceField.m; sourceTree = "<group>"; };
+		EDD7359E1DFEE83900100F37 /* ILPDFFormSignatureField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFFormSignatureField.h; sourceTree = "<group>"; };
+		EDD7359F1DFEE83900100F37 /* ILPDFFormSignatureField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFFormSignatureField.m; sourceTree = "<group>"; };
+		EDD735A01DFEE83900100F37 /* ILPDFFormTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFFormTextField.h; sourceTree = "<group>"; };
+		EDD735A11DFEE83900100F37 /* ILPDFFormTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFFormTextField.m; sourceTree = "<group>"; };
+		EDD735A21DFEE83900100F37 /* ILPDFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFView.h; sourceTree = "<group>"; };
+		EDD735A31DFEE83900100F37 /* ILPDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFView.m; sourceTree = "<group>"; };
+		EDD735A41DFEE83900100F37 /* ILPDFWidgetAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPDFWidgetAnnotationView.h; sourceTree = "<group>"; };
+		EDD735A51DFEE83900100F37 /* ILPDFWidgetAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPDFWidgetAnnotationView.m; sourceTree = "<group>"; };
+		EDD735BC1DFEF2F200100F37 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "ILPDFKit-Cordova/config.xml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDA6FCCB1DFF1EA400B29014 /* UIKit.framework in Frameworks */,
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -263,6 +275,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDA6FCCA1DFF1EA400B29014 /* UIKit.framework */,
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
@@ -281,9 +294,10 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				32644AFC19F7ABA60083871E /* ILPDFKit.h */,
-				32644AFD19F7ABA60083871E /* ILPDFKit.m */,
-				32644AFF19F7AD6A0083871E /* ILPDFKit */,
+				32644AFC19F7ABA60083871E /* ILPDFKitPlugin.h */,
+				32644AFD19F7ABA60083871E /* ILPDFKitPlugin.m */,
+				EDD735BC1DFEF2F200100F37 /* test.pdf */,
+				EDD735741DFEE83900100F37 /* ILPDFKit */,
 			);
 			name = Plugins;
 			path = "ILPDFKit-Cordova/Plugins";
@@ -340,84 +354,6 @@
 			path = se.lproj;
 			sourceTree = "<group>";
 		};
-		32644AFF19F7AD6A0083871E /* ILPDFKit */ = {
-			isa = PBXGroup;
-			children = (
-				32644B0019F7AD6A0083871E /* Controller */,
-				32644B0519F7AD6A0083871E /* Model */,
-				32644B1819F7AD6A0083871E /* PDF.h */,
-				32644B1919F7AD6A0083871E /* Utility */,
-				32644B1E19F7AD6A0083871E /* View */,
-			);
-			path = ILPDFKit;
-			sourceTree = "<group>";
-		};
-		32644B0019F7AD6A0083871E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				32644B0119F7AD6A0083871E /* PDFSerializer.h */,
-				32644B0219F7AD6A0083871E /* PDFSerializer.m */,
-				32644B0319F7AD6A0083871E /* PDFViewController.h */,
-				32644B0419F7AD6A0083871E /* PDFViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		32644B0519F7AD6A0083871E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				32644B0619F7AD6A0083871E /* PDFArray.h */,
-				32644B0719F7AD6A0083871E /* PDFArray.m */,
-				32644B0819F7AD6A0083871E /* PDFDictionary.h */,
-				32644B0919F7AD6A0083871E /* PDFDictionary.m */,
-				32644B0A19F7AD6A0083871E /* PDFDocument.h */,
-				32644B0B19F7AD6A0083871E /* PDFDocument.m */,
-				32644B0C19F7AD6A0083871E /* PDFForm.h */,
-				32644B0D19F7AD6A0083871E /* PDFForm.m */,
-				32644B0E19F7AD6A0083871E /* PDFFormAction.h */,
-				32644B0F19F7AD6A0083871E /* PDFFormAction.m */,
-				32644B1019F7AD6A0083871E /* PDFFormContainer.h */,
-				32644B1119F7AD6A0083871E /* PDFFormContainer.m */,
-				32644B1219F7AD6A0083871E /* PDFObject.h */,
-				32644B1319F7AD6A0083871E /* PDFObject.m */,
-				32644B1419F7AD6A0083871E /* PDFPage.h */,
-				32644B1519F7AD6A0083871E /* PDFPage.m */,
-				32644B1619F7AD6A0083871E /* PDFStream.h */,
-				32644B1719F7AD6A0083871E /* PDFStream.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		32644B1919F7AD6A0083871E /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				32644B1A19F7AD6A0083871E /* PDFObjectParser.h */,
-				32644B1B19F7AD6A0083871E /* PDFObjectParser.m */,
-				32644B1C19F7AD6A0083871E /* PDFUtility.h */,
-				32644B1D19F7AD6A0083871E /* PDFUtility.m */,
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
-		32644B1E19F7AD6A0083871E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				32644B1F19F7AD6A0083871E /* PDFFormButtonField.h */,
-				32644B2019F7AD6A0083871E /* PDFFormButtonField.m */,
-				32644B2119F7AD6A0083871E /* PDFFormChoiceField.h */,
-				32644B2219F7AD6A0083871E /* PDFFormChoiceField.m */,
-				32644B2319F7AD6A0083871E /* PDFFormSignatureField.h */,
-				32644B2419F7AD6A0083871E /* PDFFormSignatureField.m */,
-				32644B2519F7AD6A0083871E /* PDFFormTextField.h */,
-				32644B2619F7AD6A0083871E /* PDFFormTextField.m */,
-				32644B2719F7AD6A0083871E /* PDFView.h */,
-				32644B2819F7AD6A0083871E /* PDFView.m */,
-				32644B2919F7AD6A0083871E /* PDFWidgetAnnotationView.h */,
-				32644B2A19F7AD6A0083871E /* PDFWidgetAnnotationView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		EB87FDF11871DA420020F90C /* Staging */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +361,97 @@
 				301BF56E109A69640062928A /* www */,
 			);
 			name = Staging;
+			sourceTree = "<group>";
+		};
+		EDD735741DFEE83900100F37 /* ILPDFKit */ = {
+			isa = PBXGroup;
+			children = (
+				EDD735751DFEE83900100F37 /* Controller */,
+				EDD7357A1DFEE83900100F37 /* ILPDFKit.h */,
+				EDD7357B1DFEE83900100F37 /* Model */,
+				EDD735941DFEE83900100F37 /* Utility */,
+				EDD735991DFEE83900100F37 /* View */,
+			);
+			path = ILPDFKit;
+			sourceTree = "<group>";
+		};
+		EDD735751DFEE83900100F37 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EDD735761DFEE83900100F37 /* ILPDFSerializer.h */,
+				EDD735771DFEE83900100F37 /* ILPDFSerializer.m */,
+				EDD735781DFEE83900100F37 /* ILPDFViewController.h */,
+				EDD735791DFEE83900100F37 /* ILPDFViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EDD7357B1DFEE83900100F37 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EDD7357C1DFEE83900100F37 /* ILPDFDocument.h */,
+				EDD7357D1DFEE83900100F37 /* ILPDFDocument.m */,
+				EDD7357E1DFEE83900100F37 /* ILPDFForm.h */,
+				EDD7357F1DFEE83900100F37 /* ILPDFForm.m */,
+				EDD735801DFEE83900100F37 /* ILPDFFormContainer.h */,
+				EDD735811DFEE83900100F37 /* ILPDFFormContainer.m */,
+				EDD735821DFEE83900100F37 /* ILPDFPage.h */,
+				EDD735831DFEE83900100F37 /* ILPDFPage.m */,
+				EDD735841DFEE83900100F37 /* Objects */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EDD735841DFEE83900100F37 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				EDD735851DFEE83900100F37 /* ILPDFArray.h */,
+				EDD735861DFEE83900100F37 /* ILPDFArray.m */,
+				EDD735871DFEE83900100F37 /* ILPDFDictionary.h */,
+				EDD735881DFEE83900100F37 /* ILPDFDictionary.m */,
+				EDD735891DFEE83900100F37 /* ILPDFName.h */,
+				EDD7358A1DFEE83900100F37 /* ILPDFName.m */,
+				EDD7358B1DFEE83900100F37 /* ILPDFNull.h */,
+				EDD7358C1DFEE83900100F37 /* ILPDFNull.m */,
+				EDD7358D1DFEE83900100F37 /* ILPDFNumber.h */,
+				EDD7358E1DFEE83900100F37 /* ILPDFNumber.m */,
+				EDD7358F1DFEE83900100F37 /* ILPDFObject.h */,
+				EDD735901DFEE83900100F37 /* ILPDFStream.h */,
+				EDD735911DFEE83900100F37 /* ILPDFStream.m */,
+				EDD735921DFEE83900100F37 /* ILPDFString.h */,
+				EDD735931DFEE83900100F37 /* ILPDFString.m */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		EDD735941DFEE83900100F37 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				EDD735951DFEE83900100F37 /* ILPDFObjectParser.h */,
+				EDD735961DFEE83900100F37 /* ILPDFObjectParser.m */,
+				EDD735971DFEE83900100F37 /* ILPDFUtility.h */,
+				EDD735981DFEE83900100F37 /* ILPDFUtility.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		EDD735991DFEE83900100F37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EDD7359A1DFEE83900100F37 /* ILPDFFormButtonField.h */,
+				EDD7359B1DFEE83900100F37 /* ILPDFFormButtonField.m */,
+				EDD7359C1DFEE83900100F37 /* ILPDFFormChoiceField.h */,
+				EDD7359D1DFEE83900100F37 /* ILPDFFormChoiceField.m */,
+				EDD7359E1DFEE83900100F37 /* ILPDFFormSignatureField.h */,
+				EDD7359F1DFEE83900100F37 /* ILPDFFormSignatureField.m */,
+				EDD735A01DFEE83900100F37 /* ILPDFFormTextField.h */,
+				EDD735A11DFEE83900100F37 /* ILPDFFormTextField.m */,
+				EDD735A21DFEE83900100F37 /* ILPDFView.h */,
+				EDD735A31DFEE83900100F37 /* ILPDFView.m */,
+				EDD735A41DFEE83900100F37 /* ILPDFWidgetAnnotationView.h */,
+				EDD735A51DFEE83900100F37 /* ILPDFWidgetAnnotationView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,6 +483,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 510;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = L558M923KS;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ILPDFKit-Cordova" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -501,6 +533,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDD735BD1DFEF2F200100F37 /* test.pdf in Resources */,
 				7E7966E41810823500FA85AD /* icon-76.png in Resources */,
 				7E7966DF1810823500FA85AD /* icon-40@2x.png in Resources */,
 				308D05371370CCF300D202BF /* icon-72.png in Resources */,
@@ -554,29 +587,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32644B3719F7AD6A0083871E /* PDFUtility.m in Sources */,
-				32644B3019F7AD6A0083871E /* PDFForm.m in Sources */,
-				32644B3B19F7AD6A0083871E /* PDFFormTextField.m in Sources */,
-				32644B3C19F7AD6A0083871E /* PDFView.m in Sources */,
-				32644B3419F7AD6A0083871E /* PDFPage.m in Sources */,
-				32644AFE19F7ABA60083871E /* ILPDFKit.m in Sources */,
-				32644B3219F7AD6A0083871E /* PDFFormContainer.m in Sources */,
-				32644B3119F7AD6A0083871E /* PDFFormAction.m in Sources */,
-				32644B2F19F7AD6A0083871E /* PDFDocument.m in Sources */,
-				32644B2D19F7AD6A0083871E /* PDFArray.m in Sources */,
-				32644B2E19F7AD6A0083871E /* PDFDictionary.m in Sources */,
-				32644B3519F7AD6A0083871E /* PDFStream.m in Sources */,
-				32644B2C19F7AD6A0083871E /* PDFViewController.m in Sources */,
-				32644B3619F7AD6A0083871E /* PDFObjectParser.m in Sources */,
-				32644B3319F7AD6A0083871E /* PDFObject.m in Sources */,
-				32644B3919F7AD6A0083871E /* PDFFormChoiceField.m in Sources */,
+				EDD735B61DFEE83A00100F37 /* ILPDFFormChoiceField.m in Sources */,
+				EDD735AB1DFEE83900100F37 /* ILPDFPage.m in Sources */,
+				EDD735B21DFEE83900100F37 /* ILPDFString.m in Sources */,
+				EDD735A61DFEE83900100F37 /* ILPDFSerializer.m in Sources */,
+				EDD735A91DFEE83900100F37 /* ILPDFForm.m in Sources */,
+				EDD735B11DFEE83900100F37 /* ILPDFStream.m in Sources */,
+				32644AFE19F7ABA60083871E /* ILPDFKitPlugin.m in Sources */,
+				EDD735B71DFEE83A00100F37 /* ILPDFFormSignatureField.m in Sources */,
+				EDD735AE1DFEE83900100F37 /* ILPDFName.m in Sources */,
+				EDD735B31DFEE83900100F37 /* ILPDFObjectParser.m in Sources */,
+				EDD735B51DFEE83A00100F37 /* ILPDFFormButtonField.m in Sources */,
+				EDD735B41DFEE83A00100F37 /* ILPDFUtility.m in Sources */,
+				EDD735AA1DFEE83900100F37 /* ILPDFFormContainer.m in Sources */,
+				EDD735BA1DFEE83A00100F37 /* ILPDFWidgetAnnotationView.m in Sources */,
+				EDD735AF1DFEE83900100F37 /* ILPDFNull.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				EDD735B81DFEE83A00100F37 /* ILPDFFormTextField.m in Sources */,
+				EDD735B91DFEE83A00100F37 /* ILPDFView.m in Sources */,
+				EDD735A81DFEE83900100F37 /* ILPDFDocument.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
-				32644B2B19F7AD6A0083871E /* PDFSerializer.m in Sources */,
+				EDD735B01DFEE83900100F37 /* ILPDFNumber.m in Sources */,
+				EDD735AC1DFEE83900100F37 /* ILPDFArray.m in Sources */,
+				EDD735AD1DFEE83900100F37 /* ILPDFDictionary.m in Sources */,
+				EDD735A71DFEE83900100F37 /* ILPDFViewController.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				32644B3D19F7AD6A0083871E /* PDFWidgetAnnotationView.m in Sources */,
-				32644B3A19F7AD6A0083871E /* PDFFormSignatureField.m in Sources */,
-				32644B3819F7AD6A0083871E /* PDFFormButtonField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +667,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = L558M923KS;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -654,6 +690,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)/libCordova.a\"",
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ilpdfkit-cordova";
 				PRODUCT_NAME = "ILPDFKit-Cordova";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -665,6 +702,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = L558M923KS;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ILPDFKit-Cordova/ILPDFKit-Cordova-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -685,6 +723,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)/libCordova.a\"",
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ilpdfkit-cordova";
 				PRODUCT_NAME = "ILPDFKit-Cordova";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
