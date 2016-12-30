@@ -93,11 +93,14 @@
             }
             @catch (NSException *exception) {
                 NSLog(@"%@", exception);
-                _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to open pdf"];
+                NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:3], @"errorCode", @"Failed to open pdf", @"errorMessage", nil];
+                //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to open pdf"];
+                _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
             }
         }
         else {
-            _pluginResult=[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"The path/url is empty"];
+            NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:4], @"errorCode", @"The path/url is empty", @"errorMessage", nil];
+            _pluginResult=[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
         }
         if(_pluginResult != nil){
             [self.commandDelegate sendPluginResult:_pluginResult callbackId:command.callbackId];
@@ -115,8 +118,10 @@
         [alert show];
     }
     else {
-        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success to close pdf"];
-
+        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:0], @"errorCode", @"Success to close pdf", @"errorMessage", nil];
+        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
+        //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success to close pdf"];
+        
         [self.commandDelegate sendPluginResult:_pluginResult callbackId:_commandT.callbackId];
         [self.pdfViewController dismissViewControllerAnimated:YES completion:nil];
     }
@@ -137,8 +142,11 @@
     [data writeToFile:finalPath options:NSDataWritingAtomic error:&error];
     
     if(error){
-        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to save pdf"]
+        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:2], @"errorCode", @"Failed to save pdf", @"errorMessage", nil];
+        [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result]
                                     callbackId:_commandT.callbackId];
+        //[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to save pdf"]
+        //                            callbackId:_commandT.callbackId];
     }else{
         NSMutableDictionary* resObj = [NSMutableDictionary dictionaryWithCapacity:1];
         [resObj setObject:finalPath forKey:@"filePath"];
@@ -340,11 +348,15 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         [self.pdfViewController dismissViewControllerAnimated:YES completion:nil];
-        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success to close pdf"];
+        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:0], @"errorCode", @"Success to close pdf", @"errorMessage", nil];
+        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
+        //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success to close pdf"];
 
     }
     else{
-        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"The user cancel th operation"];
+        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:1], @"errorCode", @"The user cancel th operation", @"errorMessage", nil];
+        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
+        //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"The user cancel th operation"];
     }
     [self.commandDelegate sendPluginResult:_pluginResult callbackId:_commandT.callbackId];
 }
