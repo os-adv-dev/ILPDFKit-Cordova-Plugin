@@ -43,13 +43,11 @@
         BOOL openFromPath = [options[@"openFromPath"] boolValue];
 
         // verify if the document is in documents folder
-        if (useDocumentsFolder) {
+        if (useDocumentsFolder && !openFromUrl && openFromPath) {
             pdf = [[self documentsDirectory] stringByAppendingPathComponent:pdf];
         }
-        else {
-            if(openFromPath){
+        if(openFromPath && !openFromUrl && openFromPath){
                 pdf = [self pdfFilePathWithPath:pdf];
-            }
         }
         self.fileNameToSave = options[@"fileNameToSave"];
         if (self.fileNameToSave.length == 0) {
@@ -66,40 +64,43 @@
 
         if (pdf && pdf.length != 0) {
             @try {
-                if(openFromUrl){
-                    NSURL *fileURL = [NSURL URLWithString:pdf];
-                    NSURLSession *session = [NSURLSession sharedSession];
-                    [[session dataTaskWithURL:fileURL completionHandler:^(NSData *data,
-                                                                      NSURLResponse *response,
-                                                                      NSError *error){
-                        if(!error)
-                        {
-                            NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[response suggestedFilename]];
-                            [data writeToFile:filePath atomically:YES];
-                            [self openPdfFromPath:filePath];
-                        }
-                        else{
-                            NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:6], @"errorCode", @"Failed to download pdf", @"errorMessage", nil];
-                            //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to download pdf"];
-                            _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
-                        }
-                    
-                    }] resume];
-                }
-                else if (openFromPath){
-                    [self openPdfFromPath:pdf];
+                if(openFromUrl && openFromPath){
+                    NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:8], @"errorCode", @"Only One of Types of path should be choose", @"errorMessage", nil];
+                    _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
                 }
                 else{
-                    NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:5], @"errorCode", @"One of Types of path should be choose", @"errorMessage", nil];
-                    //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"One of Types of path should be choose"];
-                    _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
-
+                    if(openFromUrl){
+                        NSURL *fileURL = [NSURL URLWithString:pdf];
+                        NSURLSession *session = [NSURLSession sharedSession];
+                        [[session dataTaskWithURL:fileURL completionHandler:^(NSData *data,
+                                                                      NSURLResponse *response,
+                                                                      NSError *error){
+                            if(!error)
+                            {
+                                NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[response suggestedFilename]];
+                                [data writeToFile:filePath atomically:YES];
+                                [self openPdfFromPath:filePath];
+                            }
+                            else{
+                                NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:6], @"errorCode", @"Failed to download pdf", @"errorMessage", nil];
+                                _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
+                                [self.commandDelegate sendPluginResult:_pluginResult callbackId:command.callbackId];
+                                _isPDFOpen = false;
+                            }
+                        }] resume];
+                    }
+                    else if (openFromPath){
+                        [self openPdfFromPath:pdf];
+                    }
+                    else{
+                        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:5], @"errorCode", @"One of Types of path should be choose", @"errorMessage", nil];
+                        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
+                    }
                 }
             }
             @catch (NSException *exception) {
                 NSLog(@"%@", exception);
                 NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:3], @"errorCode", @"Failed to open pdf", @"errorMessage", nil];
-                //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to open pdf"];
                 _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
             }
         }
@@ -108,6 +109,7 @@
             _pluginResult=[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
         }
         if(_pluginResult != nil){
+            _isPDFOpen = false;
             [self.commandDelegate sendPluginResult:_pluginResult callbackId:command.callbackId];
         }
     }];
@@ -131,7 +133,7 @@
                              handler:^(UIAlertAction * action)
                              {
                                  [self.pdfViewController dismissViewControllerAnimated:YES completion:nil];
-                                 NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:0], @"errorCode", @"Success to close pdf", @"errorMessage", nil];
+                                 NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:0], @"errorCode", @"Success to close pdf", @"successMessage", nil];
                                  _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
                                  [self.commandDelegate sendPluginResult:_pluginResult callbackId:_commandT.callbackId];
                                  _isPDFOpen=false;
@@ -141,7 +143,7 @@
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action)
                                  {
-                                     NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:1], @"errorCode", @"The user cancel th operation", @"errorMessage", nil];
+                                     NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:1], @"errorCode", @"The user cancel the operation", @"errorMessage", nil];
                                      _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
                                      [self.commandDelegate sendPluginResult:_pluginResult callbackId:_commandT.callbackId];
                                      [alert dismissViewControllerAnimated:YES completion:nil];
@@ -154,10 +156,9 @@
         [self.pdfViewController presentViewController:alert animated:YES completion:nil];
     }
     else {
-        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:0], @"errorCode", @"Success to close pdf", @"errorMessage", nil];
+        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:0], @"errorCode", @"Success to close pdf", @"successMessage", nil];
         _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
-        //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success to close pdf"];
-        
+        _isPDFOpen = false;
         [self.commandDelegate sendPluginResult:_pluginResult callbackId:_commandT.callbackId];
         [self.pdfViewController dismissViewControllerAnimated:YES completion:nil];
     }
@@ -181,8 +182,6 @@
         NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:2], @"errorCode", @"Failed to save pdf", @"errorMessage", nil];
         [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result]
                                     callbackId:_commandT.callbackId];
-        //[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to save pdf"]
-        //                            callbackId:_commandT.callbackId];
     }else{
         NSMutableDictionary* resObj = [NSMutableDictionary dictionaryWithCapacity:1];
         [resObj setObject:finalPath forKey:@"filePath"];
@@ -284,16 +283,25 @@
 // open pdf view from a path String
 -(void) openPdfFromPath:(NSString *) path{
     dispatch_sync(dispatch_get_main_queue(), ^{
-        ILPDFDocument *document = [[ILPDFDocument alloc] initWithPath:path];
-        self.pdfViewController = [[ILPDFViewController alloc]init];
-        [self.pdfViewController setDocument: document];
-        if (!self.backgroundMode) {
-            [[super viewController] presentViewController:self.pdfViewController animated:YES completion:^{
-                [self addTopView];
-                NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-                [center addObserver:self selector:@selector(changeOrientation) name:UIDeviceOrientationDidChangeNotification object:nil];
-            }];
-       }
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if ([fileManager fileExistsAtPath:path]){
+            ILPDFDocument *document = [[ILPDFDocument alloc] initWithPath:path];
+            self.pdfViewController = [[ILPDFViewController alloc]init];
+            [self.pdfViewController setDocument: document];
+            if (!self.backgroundMode) {
+                [[super viewController] presentViewController:self.pdfViewController animated:YES completion:^{
+                    [self addTopView];
+                    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+                    [center addObserver:self selector:@selector(changeOrientation) name:UIDeviceOrientationDidChangeNotification object:nil];
+                }];
+            }
+        }
+        else{
+            NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:7], @"errorCode", @"The path is not valid", @"errorMessage", nil];
+            _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
+            [self.commandDelegate sendPluginResult:_pluginResult callbackId:_commandT.callbackId];
+            _isPDFOpen = false;
+        }
     });
 }
 

@@ -108,8 +108,11 @@ Possible `errorCode` values:
  - `2` - Failed to save pdf.
  - `3` - Failed to open pdf.
  - `4` - The path/url is empty
- - `5` - One of Types of path should be choose
+ - `5` - One of types of path should be choose
  - `6` - Failed to download pdf.
+ - `7` - The path is not valid.
+ - `8` - Only one of types of path should be choose.
+ 
 
 
 ## License
