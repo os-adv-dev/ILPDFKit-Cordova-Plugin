@@ -17,19 +17,22 @@
 @property (nonatomic, assign) BOOL isAnyFormChanged;
 @property (nonatomic, assign) BOOL askToSaveBeforeClose;
 @property (nonatomic, assign) BOOL backgroundMode;
-@property (nonatomic, assign) BOOL showSaveButton;
 @property (nonatomic, assign) BOOL isKeyboardOpen;
 @property (nonatomic, strong) UIButton *buttonS;
 @property (nonatomic, strong) UIButton *button;
 @property (nonatomic, strong) UIView *topView;
 @property CDVInvokedUrlCommand *commandT;
 @property CDVPluginResult *pluginResult;
+@property BOOL isPDFOpen;
 
 @end
 
 @implementation ILPDFKitPlugin
 
 - (void)present:(CDVInvokedUrlCommand *)command {
+    if(!_isPDFOpen){
+    _isPDFOpen = true;
+    _pluginResult = nil;
     _commandT = command;
     [self.commandDelegate runInBackground:^{
         NSString *pdf = [command.arguments objectAtIndex:0];
@@ -53,8 +56,6 @@
            self.fileNameToSave = [pdf lastPathComponent];
         }
         
-        self.showSaveButton = [options[@"showSaveButton"] boolValue];
-
         self.autoSave = [options[@"autoSave"] boolValue];
 
         self.askToSaveBeforeClose = [options[@"askToSaveBeforeClose"] boolValue];
@@ -71,19 +72,19 @@
                     [[session dataTaskWithURL:fileURL completionHandler:^(NSData *data,
                                                                       NSURLResponse *response,
                                                                       NSError *error){
-                    if(!error)
-                    {
-                        NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[response suggestedFilename]];
-                        [data writeToFile:filePath atomically:YES];
-                        [self openPdfFromPath:filePath];
-                    }
-                    else{
-                        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:6], @"errorCode", @"Failed to download pdf", @"errorMessage", nil];
-                        //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to download pdf"];
-                        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
-                    }
+                        if(!error)
+                        {
+                            NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[response suggestedFilename]];
+                            [data writeToFile:filePath atomically:YES];
+                            [self openPdfFromPath:filePath];
+                        }
+                        else{
+                            NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:6], @"errorCode", @"Failed to download pdf", @"errorMessage", nil];
+                            //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to download pdf"];
+                            _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
+                        }
                     
-                }] resume];
+                    }] resume];
                 }
                 else if (openFromPath){
                     [self openPdfFromPath:pdf];
@@ -110,6 +111,7 @@
             [self.commandDelegate sendPluginResult:_pluginResult callbackId:command.callbackId];
         }
     }];
+    }
 }
 
 - (void)dealloc {
@@ -118,8 +120,38 @@
 
 - (void)onClose:(id)sender {
     if (self.askToSaveBeforeClose) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:NSLocalizedString(@"You have made changes to the form that have not been saved. Do you really want to quit?", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No", nil) otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
-        [alert show];
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@""
+                                      message:@"You have made changes to the form that have not been saved. Do you really want to quit?"
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"YES"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [self.pdfViewController dismissViewControllerAnimated:YES completion:nil];
+                                 NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:0], @"errorCode", @"Success to close pdf", @"errorMessage", nil];
+                                 _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
+                                 [self.commandDelegate sendPluginResult:_pluginResult callbackId:_commandT.callbackId];
+                                 _isPDFOpen=false;
+                             }];
+        UIAlertAction* cancel = [UIAlertAction
+                                 actionWithTitle:@"NO"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:1], @"errorCode", @"The user cancel th operation", @"errorMessage", nil];
+                                     _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
+                                     [self.commandDelegate sendPluginResult:_pluginResult callbackId:_commandT.callbackId];
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+        
+        [alert addAction:cancel];
+        [alert addAction:ok];
+        
+        [self.pdfViewController presentViewController:alert animated:YES completion:nil];
     }
     else {
         NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:0], @"errorCode", @"Success to close pdf", @"errorMessage", nil];
@@ -160,7 +192,7 @@
     [self.commandDelegate sendPluginResult:_pluginResult
                                 callbackId:_commandT.callbackId];
     [self.pdfViewController dismissViewControllerAnimated:YES completion:nil];
-
+    _isPDFOpen = false;
 
 }
 
@@ -251,62 +283,41 @@
 
 // open pdf view from a path String
 -(void) openPdfFromPath:(NSString *) path{
-    ILPDFDocument *document = [[ILPDFDocument alloc] initWithPath:path];
-    self.pdfViewController = [[ILPDFViewController alloc]init];
-    [self.pdfViewController setDocument: document];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        ILPDFDocument *document = [[ILPDFDocument alloc] initWithPath:path];
+        self.pdfViewController = [[ILPDFViewController alloc]init];
+        [self.pdfViewController setDocument: document];
+        if (!self.backgroundMode) {
+            [[super viewController] presentViewController:self.pdfViewController animated:YES completion:^{
+                [self addTopView];
+                NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+                [center addObserver:self selector:@selector(changeOrientation) name:UIDeviceOrientationDidChangeNotification object:nil];
+            }];
+       }
+    });
+}
+
+- (void)addTopView {
     _topView= [[UIView alloc]initWithFrame:CGRectMake(0,0, [[UIScreen mainScreen] bounds].size.width ,40)];
     _topView.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
     [_topView setAutoresizesSubviews:true];
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
     [_button addTarget:self
-               action:@selector(onClose:)
-     forControlEvents:UIControlEventTouchUpInside];
+                action:@selector(onClose:)
+      forControlEvents:UIControlEventTouchUpInside];
     [_button setTitle:@"Close View" forState:UIControlStateNormal];
     _button.frame = CGRectMake(5, 10, 160.0, 20.0);
     [_button setTitleColor:[UIColor colorWithRed:36/255.0 green:71/255.0 blue:113/255.0 alpha:1.0] forState:UIControlStateNormal];
-    if(_showSaveButton){
-        _buttonS = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_buttonS addTarget:self
-                action:@selector(save:)
+    _buttonS = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_buttonS addTarget:self
+                     action:@selector(save:)
            forControlEvents:UIControlEventTouchUpInside];
-        [_buttonS setTitle:@"Save PDF" forState:UIControlStateNormal];
-        _buttonS.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width - 165.0, 10, 160.0, 20.0);
-        [_buttonS setTitleColor:[UIColor colorWithRed:36/255.0 green:71/255.0 blue:113/255.0 alpha:1.0] forState:UIControlStateNormal];
-        [_topView addSubview:_buttonS];
-    }
+    [_buttonS setTitle:@"Save PDF" forState:UIControlStateNormal];
+    _buttonS.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width - 165.0, 10, 160.0, 20.0);
+    [_buttonS setTitleColor:[UIColor colorWithRed:36/255.0 green:71/255.0 blue:113/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [_topView addSubview:_buttonS];
     [_topView addSubview:_button];
-    if (!self.backgroundMode) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [[super viewController] presentViewController:self.pdfViewController animated:YES completion:^{
-                [self listSubviewsOfView:_pdfViewController.pdfView];
-                NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-                [center addObserver:self selector:@selector(didShow) name:UIKeyboardDidShowNotification object:nil];
-                [center addObserver:self selector:@selector(didHide) name:UIKeyboardDidHideNotification object:nil];
-                [center addObserver:self selector:@selector(changeOrientation) name:UIDeviceOrientationDidChangeNotification object:nil];
-            }];
-        });
-    }
-}
-
-- (void)listSubviewsOfView:(UIView *)view {
-    
-    // Get the subviews of the view
-    NSArray *subviews = [view subviews];
-
-    // Return if there are no subviews
-    if ([subviews count] == 0) return; // COUNT CHECK LINE
-    
-    for (UIView *subview in subviews) {
-        
-        // Do what you want to do with the subview
-        if ([NSStringFromClass(subview.class) isEqualToString:@"UIWebView"]) {
-            //[subview removeGestureRecognizer:singleFingerTap];
-            //[subview addGestureRecognizer:singleFingerTap];
-            [subview insertSubview:_topView aboveSubview:(ILPDFView *)[self.pdfViewController pdfView]];
-        }
-        [self listSubviewsOfView:subview];
-
-    }
+    [_pdfViewController.pdfView.pdfView insertSubview:_topView aboveSubview:(ILPDFView *)[self.pdfViewController pdfView]];
 }
 
 -(void)changeOrientation{
@@ -316,56 +327,8 @@
     CGRect frmbS = _buttonS.frame;
     frmbS.origin.x =  [[UIScreen mainScreen] bounds].size.width - 165;
     _buttonS.frame = frmbS;
-    [_topView setNeedsDisplay];
-   [self listSubviewsOfView:_pdfViewController.pdfView];
-
+    [_pdfViewController.pdfView.pdfView insertSubview:_topView aboveSubview:(ILPDFView *)[self.pdfViewController pdfView]];
 }
 
--(void)didShow{
-    _isKeyboardOpen = true;
-}
--(void)didHide{
-    _isKeyboardOpen = false;
-}
-
-- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
-    if(!_isKeyboardOpen){
-        if (_topView.hidden){
-            _topView.hidden = NO;
-            [UIView animateWithDuration:0.1
-                             animations:^{
-                                 _topView.frame = CGRectMake(0, 0,[[UIScreen mainScreen] bounds].size.width ,40);
-                             } completion:^(BOOL finished) {
-                             }];
-        }
-        else{
-            [UIView animateWithDuration:0.1
-                             animations:^{
-                                 _topView.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width ,0);
-                             } completion:^(BOOL finished) {
-                                 _topView.hidden = YES;
-                             }];
-        }
-    }
-}
-
-
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        [self.pdfViewController dismissViewControllerAnimated:YES completion:nil];
-        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:0], @"errorCode", @"Success to close pdf", @"errorMessage", nil];
-        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
-        //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success to close pdf"];
-
-    }
-    else{
-        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:1], @"errorCode", @"The user cancel th operation", @"errorMessage", nil];
-        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
-        //_pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"The user cancel th operation"];
-    }
-    [self.commandDelegate sendPluginResult:_pluginResult callbackId:_commandT.callbackId];
-}
 @end
 
