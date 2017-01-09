@@ -40,13 +40,12 @@
         //[_pluginResult setKeepCallbackAsBool:true];
         BOOL useDocumentsFolder = [options[@"useDocumentsFolder"] boolValue];
         BOOL openFromUrl = [options[@"openFromUrl"] boolValue];
-        BOOL openFromPath = [options[@"openFromPath"] boolValue];
 
         // verify if the document is in documents folder
-        if (useDocumentsFolder && !openFromUrl && openFromPath) {
+        if (useDocumentsFolder && !openFromUrl) {
             pdf = [[self documentsDirectory] stringByAppendingPathComponent:pdf];
         }
-        if(openFromPath && !openFromUrl && openFromPath){
+        if (!openFromUrl){
                 pdf = [self pdfFilePathWithPath:pdf];
         }
         self.fileNameToSave = options[@"fileNameToSave"];
@@ -64,11 +63,6 @@
 
         if (pdf && pdf.length != 0) {
             @try {
-                if(openFromUrl && openFromPath){
-                    NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:8], @"errorCode", @"Only One of Types of path should be choose", @"errorMessage", nil];
-                    _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
-                }
-                else{
                     if(openFromUrl){
                         NSURL *fileURL = [NSURL URLWithString:pdf];
                         NSURLSession *session = [NSURLSession sharedSession];
@@ -82,21 +76,16 @@
                                 [self openPdfFromPath:filePath];
                             }
                             else{
-                                NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:6], @"errorCode", @"Failed to download pdf", @"errorMessage", nil];
+                                NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:5], @"errorCode", @"Failed to download pdf", @"errorMessage", nil];
                                 _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
                                 [self.commandDelegate sendPluginResult:_pluginResult callbackId:command.callbackId];
                                 _isPDFOpen = false;
                             }
                         }] resume];
                     }
-                    else if (openFromPath){
+                    else if (!openFromUrl){
                         [self openPdfFromPath:pdf];
                     }
-                    else{
-                        NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:5], @"errorCode", @"One of Types of path should be choose", @"errorMessage", nil];
-                        _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
-                    }
-                }
             }
             @catch (NSException *exception) {
                 NSLog(@"%@", exception);
@@ -297,7 +286,7 @@
             }
         }
         else{
-            NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:7], @"errorCode", @"The path is not valid", @"errorMessage", nil];
+            NSDictionary *result =[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:6], @"errorCode", @"The path is not valid", @"errorMessage", nil];
             _pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:result];
             [self.commandDelegate sendPluginResult:_pluginResult callbackId:_commandT.callbackId];
             _isPDFOpen = false;

@@ -59,10 +59,8 @@ Calling this method opens the pdf.
 | ---               | ---       | --- |
 | useDocumentsFolder   | Boolean | f true we will serch for pdf in app's Documents folder otherwise in www folder |
 | fileNameToSave | String | File name of saved pdf. If not specified original pdf name used. |
-| askToSaveBeforeClose  | Boolean | If true alert massage will appear on close. |
-| openFromUrl     | Boolean    | If is to open from a url |
-| openFromPath     | Boolean    | If is to open from a file path |
-
+| askToSaveBeforeClose  | Boolean | If true alert message will appear on close. |
+| openFromUrl     | Boolean    | If true open from a url. If not open from file system.|
 <a name="successCallback"></a>
 #### Success Callback
 
@@ -108,10 +106,8 @@ Possible `errorCode` values:
  - `2` - Failed to save pdf.
  - `3` - Failed to open pdf.
  - `4` - The path/url is empty
- - `5` - One of types of path should be choose
- - `6` - Failed to download pdf.
- - `7` - The path is not valid.
- - `8` - Only one of types of path should be choose.
+ - `5` - Failed to download pdf.
+ - `6` - The path is not valid.
  
 
 
