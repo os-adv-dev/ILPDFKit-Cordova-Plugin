@@ -9,9 +9,8 @@
     <description>Cordova plugin to support ILPDFKit</description>
     <author>outsystems Experts</author>
 
-    <info>
-
-    </info>
+    <!--hooks to add swift support-->
+    <hook type="after_prepare" src="hooks/add-swift-support.js" />
 
     <js-module src="www/js/ilpdfkit.js" name="ILPDFKit">
         <clobbers target="ILPDFKit" />
@@ -28,6 +27,10 @@
                 <param name="ios-package" value="ILPDFKitPlugin" />
             </feature>
         </config-file>
+
+        <!--hooks to add swift support-->
+        <hook type="after_platform_add" src="hooks/add-swift-support.js" />
+        <hook type="after_plugin_add" src="hooks/add-swift-support.js" />
 
         <!-- core CustomCamera header and source files -->
         <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKitPlugin.h" />
