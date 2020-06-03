@@ -22,7 +22,7 @@
 
 #import "ILPDFKit.h"
 #import "ILPDFFormContainer.h"
-#import "ILPDFKit-Swift.h"
+#import "TargetName-Swift.h"
 
 @interface ILPDFViewController(Private)
 - (void)loadPDFView;

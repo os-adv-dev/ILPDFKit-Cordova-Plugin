@@ -24,7 +24,7 @@
 #import "ILPDFFormButtonField.h"
 #import "ILPDFFormContainer.h"
 #import "ILPDFKit.h"
-#import "ILPDFKit-Swift.h"
+#import "TargetName-Swift.h"
 
 static NSString *const ILPDFPageViewWebKitIdentifier = @"UIPDFPageView";
 static NSString *const ILPDFContainerViewWebKitIdentifier = @"WKPDFView";

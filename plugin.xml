@@ -2,8 +2,8 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:rim="http://www.blackberry.com/ns/widgets"
-    id="com.outsystems.ilpdfkit-cordova"
-    version="0.0.1">
+    id="com-outsystems-ilpdfkit-cordova"
+    version="1.0.2">
 
     <name>ILPDFKit</name>
     <description>Cordova plugin to support ILPDFKit</description>
@@ -11,6 +11,9 @@
 
     <!--hooks to add swift support-->
     <hook type="after_prepare" src="hooks/add-swift-support.js" />
+
+
+    <hook type="after_plugin_add" src="hooks/replacePlaceholder.js" />
 
     <js-module src="www/js/ilpdfkit.js" name="ILPDFKit">
         <clobbers target="ILPDFKit" />
@@ -57,6 +60,7 @@
         <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormTextField.h" />
         <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFView.h" />
         <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFWidgetAnnotationView.h" />
+        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Swift/ILPDFKit+Bridging-Header.h" />
 
 
         <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKitPlugin.m" />
