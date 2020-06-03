@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @class ILPDFWidgetAnnotationView;
 
@@ -42,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** The webview used to render the PDF.
  */
-@property (nonatomic, readonly) UIWebView *pdfView;
+@property (nonatomic, readonly) WKWebView *pdfView;
 
 
 /**---------------------------------------------------------------------------------------

@@ -25,7 +25,7 @@
 #import "ILPDFFormContainer.h"
 #import "ILPDFKit.h"
 
-@interface ILPDFView(Delegates) <UIScrollViewDelegate,UIGestureRecognizerDelegate,UIWebViewDelegate>
+@interface ILPDFView(Delegates) <UIScrollViewDelegate,UIGestureRecognizerDelegate,WKNavigationDelegate>
 @end
 
 @interface ILPDFView(Private)
@@ -52,7 +52,7 @@
     if (!CGRectEqualToRect(self.bounds, CGRectZero) && self.window && !_layoutHasOccured) {
         _layoutHasOccured = YES;
 
-        _pdfView = [[UIWebView alloc] initWithFrame:self.bounds];
+        _pdfView = [[WkWebView alloc] initWithFrame:self.bounds];
         [_pdfView.scrollView setContentInset:UIEdgeInsetsMake(0, 20, self.bounds.size.height/2, 0)];
         _pdfView.scalesPageToFit = YES;
         _pdfView.scrollView.delegate = self;
@@ -128,12 +128,12 @@
 }
 
 
-#pragma mark - UIWebViewDelegate
+#pragma mark - WKWebViewDelegate
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     _canvasLoaded = YES;
     for (UIView *sv in webView.scrollView.subviews) {
-        if ([NSStringFromClass(sv.class) isEqualToString:@"UIWebPDFView"]) {
+        if ([NSStringFromClass(sv.class) isEqualToString:ILPDFContainerViewWebKitIdentifier]) {
             _uiWebPDFView = sv;
             break;
         }
