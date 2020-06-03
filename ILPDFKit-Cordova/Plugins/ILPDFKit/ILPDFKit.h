@@ -14,7 +14,7 @@ FOUNDATION_EXPORT double ILPDFKitVersionNumber;
 //! Project version string for ILPDFKit.
 FOUNDATION_EXPORT const unsigned char ILPDFKitVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import "PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import "PublicHeader.h"
 
 
 #import "ILPDFDictionary.h"
@@ -53,3 +53,6 @@ FOUNDATION_EXPORT const unsigned char ILPDFKitVersionString[];
 
 #define ILPDFFormMinFontSize 8
 #define ILPDFFormMaxFontSize 22
+
+
+

@@ -1,6 +1,6 @@
 // ILPDFFormContainer.m
 //
-// Copyright (c) 2016 Derek Blair
+// Copyright (c) 2017 Derek Blair
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,8 @@
 @interface ILPDFFormContainer(Private)
 - (void)populateNameTreeNode:(NSMutableDictionary *)node withComponents:(NSArray *)components final:(ILPDFForm *)final;
 - (NSArray *)formsDescendingFromTreeNode:(NSDictionary *)node;
-- (void)applyAnnotationTypeLeafToForms:(ILPDFDictionary *)leaf parent:(ILPDFDictionary *)parent pageMap:(NSDictionary *)pmap annotationsMap:(NSDictionary *)amap;;
-- (void)enumerateFields:(ILPDFDictionary *)fieldDict pageMap:(NSDictionary *)pmap annotationsMap:(NSDictionary *)amap;;
+- (void)applyAnnotationTypeLeafToForms:(ILPDFDictionary *)leaf parent:(ILPDFDictionary *)parent pageMap:(NSDictionary *)pmap;
+- (void)enumerateFields:(ILPDFDictionary *)fieldDict pageMap:(NSDictionary *)pmap;
 - (NSArray *)allForms;
 - (NSString *)formXMLForFormsWithRootNode:(NSDictionary *)node;
 - (void)addForm:(ILPDFForm *)form;
@@ -61,19 +61,11 @@
         _nameTree = [[NSMutableDictionary alloc] init];
         _document = parent;
         NSMutableDictionary *pmap = [NSMutableDictionary dictionary];
-        NSMutableDictionary *amap = [NSMutableDictionary dictionary];
-        for (ILPDFPage *page in _document.pages)
-        {
-            ILPDFArray* annotations = page.dictionary[@"Annots"];
-            for (ILPDFDictionary* annotation in annotations)
-            {
-                amap[@((NSUInteger)(annotation.dict))] = @(page.pageNumber);
-            }
+        for (ILPDFPage *page in _document.pages) {
             pmap[@((NSUInteger)(page.dictionary.dict))] = @(page.pageNumber);
         }
-        for (ILPDFDictionary *field in _document.catalog[@"AcroForm"][@"Fields"])
-        {
-            [self enumerateFields:field pageMap:pmap annotationsMap:amap];
+        for (ILPDFDictionary *field in _document.catalog[@"AcroForm"][@"Fields"]) {
+            [self enumerateFields:field pageMap:pmap];
         }
     }
     return self;
@@ -133,24 +125,23 @@
 
 #pragma mark - Private
 
-- (void)enumerateFields:(ILPDFDictionary *)fieldDict pageMap:(NSDictionary *)pmap annotationsMap:(NSDictionary *)amap{
+- (void)enumerateFields:(ILPDFDictionary *)fieldDict pageMap:(NSDictionary *)pmap {
     if (fieldDict[@"Subtype"]) {
         ILPDFDictionary *parent = fieldDict.parent;
-        [self applyAnnotationTypeLeafToForms:fieldDict parent:parent pageMap:pmap annotationsMap:amap];
+        [self applyAnnotationTypeLeafToForms:fieldDict parent:parent pageMap:pmap];
     } else {
         for (ILPDFDictionary *innerFieldDictionary in fieldDict[@"Kids"]) {
             ILPDFDictionary *parent = innerFieldDictionary.parent;
-            if (parent != nil) [self enumerateFields:innerFieldDictionary pageMap:pmap annotationsMap:amap];
-            else [self applyAnnotationTypeLeafToForms:innerFieldDictionary parent:fieldDict pageMap:pmap annotationsMap:amap];
+            if (parent != nil) [self enumerateFields:innerFieldDictionary pageMap:pmap];
+            else [self applyAnnotationTypeLeafToForms:innerFieldDictionary parent:fieldDict pageMap:pmap];
         }
     }
 }
 
-- (void)applyAnnotationTypeLeafToForms:(ILPDFDictionary *)leaf parent:(ILPDFDictionary *)parent pageMap:(NSDictionary *)pmap annotationsMap:(NSDictionary *)amap{
+- (void)applyAnnotationTypeLeafToForms:(ILPDFDictionary *)leaf parent:(ILPDFDictionary *)parent pageMap:(NSDictionary *)pmap {
     NSUInteger targ = (NSUInteger)(((ILPDFDictionary *)(leaf[@"P"])).dict);
-    NSUInteger aarg = (NSUInteger)(ILPDFDictionary *)leaf.dict;
     leaf.parent = parent;
-    NSUInteger index = targ ? ([pmap[@(targ)] unsignedIntegerValue] - 1):([amap[@(aarg)] unsignedIntegerValue] - 1);
+    NSUInteger index = targ ? ([pmap[@(targ)] unsignedIntegerValue] - 1):0;
     ILPDFForm *form = [[ILPDFForm alloc] initWithFieldDictionary:leaf page:_document.pages[index] parent:self];
     [self addForm:form];
 }
@@ -173,7 +164,7 @@
     NSString *base = components[0];
     if ([components count] == 1) {
         NSMutableArray *arr = node[base];
-        if (arr == nil) {
+        if (arr == nil || ![arr isKindOfClass:NSMutableArray.class]) {
             arr = [NSMutableArray arrayWithObject:final];
             node[base] = arr;
         } else {
@@ -241,10 +232,12 @@
 
         ILPDFWidgetAnnotationView *add = nil;
         if ([form associatedWidget] == nil) {
-            add = [form createWidgetAnnotationViewForPageView:pageView ];
-            add.page = form.page;
-            wasAdded = YES;
-            [views addObject:add];
+            add = [form createWidgetAnnotationViewForPageView:pageView];
+            if (add) {
+                add.page = form.page;
+                wasAdded = YES;
+                [views addObject:add];
+            }
         } else {
             add = [form associatedWidget];
         }
@@ -266,7 +259,8 @@
 
         for (UIView *v in views) {
             if ([v isKindOfClass:[ILPDFFormChoiceField class]]) {
-                [pdfView.pdfView.scrollView addSubview:v];
+                UIView *scrollV = pdfView.pdfView.scrollView;
+                [scrollV addSubview:v];
                 ((ILPDFFormChoiceField *)v).parentView = pdfView;
             }
         }

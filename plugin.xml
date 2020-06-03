@@ -78,6 +78,7 @@
         <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormSignatureField.m" />
         <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormChoiceField.m" />
         <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormButtonField.m" />
+        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Swift/ILPDFKit.swift" />
 
     </platform>
 
