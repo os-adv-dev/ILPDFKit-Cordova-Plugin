@@ -13,7 +13,7 @@
 
     </info>
 
-    <js-module src="www/js/ilpdfkit.js" name="ILPDFKit">
+    <js-module src="www/ilpdfkit.js" name="ILPDFKit">
         <clobbers target="ILPDFKit" />
     </js-module>
 
@@ -30,54 +30,54 @@
         </config-file>
 
         <!-- core CustomCamera header and source files -->
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKitPlugin.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/ILPDFKit.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Controller/ILPDFViewController.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Controller/ILPDFSerializer.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFArray.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFDictionary.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFName.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFNull.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFNumber.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFObject.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFStream.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFString.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/ILPDFDocument.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/ILPDFForm.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/ILPDFFormContainer.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/ILPDFPage.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Utility/ILPDFObjectParser.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Utility/ILPDFUtility.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormButtonField.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormChoiceField.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormSignatureField.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormTextField.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFView.h" />
-        <header-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFWidgetAnnotationView.h" />
+        <header-file src="src/ios/ILPDFKitPlugin.h" />
+        <header-file src="src/ios/ILPDFKit/ILPDFKit.h" />
+        <header-file src="src/ios/ILPDFKit/Controller/ILPDFViewController.h" />
+        <header-file src="src/ios/ILPDFKit/Controller/ILPDFSerializer.h" />
+        <header-file src="src/ios/ILPDFKit/Model/Objects/ILPDFArray.h" />
+        <header-file src="src/ios/ILPDFKit/Model/Objects/ILPDFDictionary.h" />
+        <header-file src="src/ios/ILPDFKit/Model/Objects/ILPDFName.h" />
+        <header-file src="src/ios/ILPDFKit/Model/Objects/ILPDFNull.h" />
+        <header-file src="src/ios/ILPDFKit/Model/Objects/ILPDFNumber.h" />
+        <header-file src="src/ios/ILPDFKit/Model/Objects/ILPDFObject.h" />
+        <header-file src="src/ios/ILPDFKit/Model/Objects/ILPDFStream.h" />
+        <header-file src="src/ios/ILPDFKit/Model/Objects/ILPDFString.h" />
+        <header-file src="src/ios/ILPDFKit/Model/ILPDFDocument.h" />
+        <header-file src="src/ios/ILPDFKit/Model/ILPDFForm.h" />
+        <header-file src="src/ios/ILPDFKit/Model/ILPDFFormContainer.h" />
+        <header-file src="src/ios/ILPDFKit/Model/ILPDFPage.h" />
+        <header-file src="src/ios/ILPDFKit/Utility/ILPDFObjectParser.h" />
+        <header-file src="src/ios/ILPDFKit/Utility/ILPDFUtility.h" />
+        <header-file src="src/ios/ILPDFKit/View/ILPDFFormButtonField.h" />
+        <header-file src="src/ios/ILPDFKit/View/ILPDFFormChoiceField.h" />
+        <header-file src="src/ios/ILPDFKit/View/ILPDFFormSignatureField.h" />
+        <header-file src="src/ios/ILPDFKit/View/ILPDFFormTextField.h" />
+        <header-file src="src/ios/ILPDFKit/View/ILPDFView.h" />
+        <header-file src="src/ios/ILPDFKit/View/ILPDFWidgetAnnotationView.h" />
 
 
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKitPlugin.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Controller/ILPDFViewController.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Controller/ILPDFSerializer.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/ILPDFPage.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/ILPDFFormContainer.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/ILPDFForm.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/ILPDFDocument.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFArray.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFDictionary.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFName.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFNull.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFNumber.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFStream.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Model/Objects/ILPDFString.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Utility/ILPDFUtility.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/Utility/ILPDFObjectParser.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFWidgetAnnotationView.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFView.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormTextField.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormSignatureField.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormChoiceField.m" />
-        <source-file src="ILPDFKit-Cordova/Plugins/ILPDFKit/View/ILPDFFormButtonField.m" />
+        <source-file src="src/ios/ILPDFKitPlugin.m" />
+        <source-file src="src/ios/ILPDFKit/Controller/ILPDFViewController.m" />
+        <source-file src="src/ios/ILPDFKit/Controller/ILPDFSerializer.m" />
+        <source-file src="src/ios/ILPDFKit/Model/ILPDFPage.m" />
+        <source-file src="src/ios/ILPDFKit/Model/ILPDFFormContainer.m" />
+        <source-file src="src/ios/ILPDFKit/Model/ILPDFForm.m" />
+        <source-file src="src/ios/ILPDFKit/Model/ILPDFDocument.m" />
+        <source-file src="src/ios/ILPDFKit/Model/Objects/ILPDFArray.m" />
+        <source-file src="src/ios/ILPDFKit/Model/Objects/ILPDFDictionary.m" />
+        <source-file src="src/ios/ILPDFKit/Model/Objects/ILPDFName.m" />
+        <source-file src="src/ios/ILPDFKit/Model/Objects/ILPDFNull.m" />
+        <source-file src="src/ios/ILPDFKit/Model/Objects/ILPDFNumber.m" />
+        <source-file src="src/ios/ILPDFKit/Model/Objects/ILPDFStream.m" />
+        <source-file src="src/ios/ILPDFKit/Model/Objects/ILPDFString.m" />
+        <source-file src="src/ios/ILPDFKit/Utility/ILPDFUtility.m" />
+        <source-file src="src/ios/ILPDFKit/Utility/ILPDFObjectParser.m" />
+        <source-file src="src/ios/ILPDFKit/View/ILPDFWidgetAnnotationView.m" />
+        <source-file src="src/ios/ILPDFKit/View/ILPDFView.m" />
+        <source-file src="src/ios/ILPDFKit/View/ILPDFFormTextField.m" />
+        <source-file src="src/ios/ILPDFKit/View/ILPDFFormSignatureField.m" />
+        <source-file src="src/ios/ILPDFKit/View/ILPDFFormChoiceField.m" />
+        <source-file src="src/ios/ILPDFKit/View/ILPDFFormButtonField.m" />
 
     </platform>
 
