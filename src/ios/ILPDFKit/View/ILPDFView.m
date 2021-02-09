@@ -25,7 +25,7 @@
 #import "ILPDFFormContainer.h"
 #import "ILPDFKit.h"
 
-@interface ILPDFView(Delegates) <UIScrollViewDelegate,UIGestureRecognizerDelegate,WKNavigationDelegate>
+@interface ILPDFView(Delegates) <UIScrollViewDelegate,UIGestureRecognizerDelegate,WKNavigationDelegate,WKUIDelegate>
 @end
 
 @interface ILPDFView(Private)
@@ -52,13 +52,19 @@
     if (!CGRectEqualToRect(self.bounds, CGRectZero) && self.window && !_layoutHasOccured) {
         _layoutHasOccured = YES;
 
-        _pdfView = [[WkWebView alloc] initWithFrame:self.bounds];
+        _pdfView = [[WKWebView alloc] initWithFrame:self.bounds];
         [_pdfView.scrollView setContentInset:UIEdgeInsetsMake(0, 20, self.bounds.size.height/2, 0)];
-        _pdfView.scalesPageToFit = YES;
+        NSString *jscript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+        [_pdfView evaluateJavaScript:jscript completionHandler:^(NSString *result, NSError *error)
+        {
+            NSLog(@"Error %@",error);
+            NSLog(@"Result %@",result);
+        }];
+        //_pdfView.scalesPageToFit = YES;
         _pdfView.scrollView.delegate = self;
         _pdfView.scrollView.bouncesZoom = NO;
         
-        _pdfView.delegate = self;
+        //_pdfView.delegate = self;
         [self addSubview:_pdfView];
         [_pdfView.scrollView setZoomScale:1];
 
@@ -67,7 +73,7 @@
         if ([_pdfDocument.documentPath isKindOfClass:[NSString class]]) {
             [_pdfView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:_pdfDocument.documentPath]]];
         } else  {
-            [_pdfView loadData:_pdfDocument.documentData MIMEType:@"application/pdf" textEncodingName:@"NSASCIIStringEncoding" baseURL:[NSURL URLWithString:@"/"]];
+            [_pdfView loadData:_pdfDocument.documentData MIMEType:@"application/pdf" characterEncodingName:@"UTF8" baseURL:[NSURL URLWithString:@"/"]];
         }
     }
 
@@ -133,7 +139,7 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     _canvasLoaded = YES;
     for (UIView *sv in webView.scrollView.subviews) {
-        if ([NSStringFromClass(sv.class) isEqualToString:ILPDFContainerViewWebKitIdentifier]) {
+        if ([NSStringFromClass(sv.class) isEqualToString:@"ILPDFContainerViewWebKitIdentifier"]) {
             _uiWebPDFView = sv;
             break;
         }
