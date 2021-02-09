@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget>
-    
+
     <access origin="*" />
     <content src="index.html" />
-    
+
     <!-- Preferences for iOS -->
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="AutoHideSplashScreen" value="true" />
@@ -21,9 +21,9 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
-    
+
     <feature name="ILPDFKit">
-        <param name="ios-package" value="ILPDFKit" />
+        <param name="ios-package" value="ILPDFKitPlugin" />
     </feature>
-    
+
 </widget>

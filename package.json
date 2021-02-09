@@ -1,0 +1,26 @@
+{
+    "name": "ilpdfkit-cordova-plugin",
+    "version": "1.0.1",
+    "description": "ilpdfkit cordova plugin",
+    "cordova": {
+      "id": "ilpdfkit-cordova-plugin",
+      "platforms": [
+        "ios",
+        "android"
+      ]
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/OutSystemsExperts/ILPDFKit-Cordova-Plugin.git"
+    },
+    "keywords": [
+      "pdfkit",
+      "outsystems",
+      "cordova",
+      "ecosystem:cordova",
+      "cordova-ios",
+      "cordova-android"
+    ],
+    "author": "OutSystemsExperts"
+  }
+  

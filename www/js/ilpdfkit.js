@@ -1,7 +1,7 @@
 var ILPDFKit = new function() {
-    
+
     //utilities
-    
+
     var self = this;
     function addMethods(methods) {
         for (var name in methods) {
@@ -37,11 +37,11 @@ var ILPDFKit = new function() {
              })();
         }
     }
-    
+
     //events
-    
+
     var listeners = {};
-    
+
     this.dispatchEvent = function(event) {
         var result = undefined;
         var functions = listeners[event.type];
@@ -53,7 +53,7 @@ var ILPDFKit = new function() {
         }
         return result;
     }
-    
+
     this.addEventListener = function(type, listener) {
         var existing = listeners[type];
         if (!existing) {
@@ -62,13 +62,13 @@ var ILPDFKit = new function() {
         }
         existing.push(listener);
     }
-    
+
     this.addEventListeners = function(listeners) {
         for (type in listeners) {
             this.addEventListener(type, listeners[type]);
         }
     }
-    
+
     this.removeEventListener = function(type, listener)
     {
         var existing = listeners[type];
@@ -79,9 +79,9 @@ var ILPDFKit = new function() {
             }
         }
     }
-    
+
     //document methods
-    
+
     addMethods({
                present: ["path", "options", "successCallback", "errorCallback"],
                setFormValue : ["formName", "formValue"],
